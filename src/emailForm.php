@@ -15,11 +15,10 @@ $email = strip_tags($_POST['email']);
 
 //create new user
 $user = new User($db);
-
 $user->fullName = $name;
 $user->email = $email;
 
-
+// Add the new user to the database
 if($user->create() === true){
     echo "Thank you $user->fullName for submitting your details";
 }else{
