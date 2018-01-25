@@ -7,7 +7,7 @@ class User{
     // DB connection
     private $conn;
     // properties
-    public function setName($fullName){
+    public function setFullName($fullName){
         $this->fullName = $fullName;
     }
 
@@ -21,11 +21,11 @@ class User{
     }
 
     // create new user
-    function createUser($name, $email)
+    function create()
     {
         // query to insert new user
         $query = "INSERT INTO
-                    user(fullname, email)
+                    users(fullname, email)
                 VALUES
                     (:fullName,
                     :email)";
@@ -37,8 +37,10 @@ class User{
 
         // execute query
         if($stmt->execute()){
+
             return true;
         }else{
+
             return $stmt->errorInfo();
         }
     }
